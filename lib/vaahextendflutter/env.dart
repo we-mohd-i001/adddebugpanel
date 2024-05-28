@@ -6,6 +6,7 @@ import 'package:get_storage/get_storage.dart';
 
 import 'app_theme.dart';
 import 'services/logging_library/logging_library.dart';
+import 'widgets/debug.dart';
 
 // After changing any const you will need to restart the app (Hot-reload won't work).
 
@@ -29,6 +30,22 @@ final EnvironmentConfig defaultConfig = EnvironmentConfig(
   internalNotificationsServiceType: InternalNotificationsServiceType.none,
   showDebugPanel: true,
   debugPanelColor: AppTheme.colors['black']!.withOpacity(0.8),
+  newSections: [
+    NewSection(
+      sectionName: 'Section Test 1',
+      contentHolder: const PanelDataContentHolder(content: {
+        'Topic 1': SectionData(value: 'Test Value'),
+        'Topic 2': SectionData(value: 'TestValue 2'),
+      }),
+    ),
+    NewSection(
+      sectionName: 'Section Test 2',
+      contentHolder: const PanelDataContentHolder(content: {
+        'Topic 1': SectionData(value: 'Test Value'),
+        'Topic 2': SectionData(value: 'TestValue 2'),
+      }),
+    )
+  ],
 );
 
 // To add new configuration add new key, value pair in envConfigs
@@ -104,6 +121,31 @@ class EnvironmentConfig {
   final bool showDebugPanel;
   final Color debugPanelColor;
 
+  //TODO : Change the link below with the link that contains the documentation for the below code
+
+  /// [Click to view full Documentation](https://docs.vaah.dev/vaahflutter)
+  ///
+  ///Example Code
+  ///```dart
+  ///[
+  ///    NewSection(
+  ///      sectionName: 'Section Test 1',
+  ///      contentHolder: const PanelDataContentHolder(content: {
+  ///        'Topic 1': Data(value: 'Test Value'),
+  ///        'Topic 2': Data(value: 'Test Value 2'),
+  ///      }),
+  ///    ),
+  ///    NewSection(
+  ///      sectionName: 'Section Test 2',
+  ///      contentHolder: const PanelDataContentHolder(content: {
+  ///        'Topic 1': Data(value: 'Test Value'),
+  ///        'Topic 2': Data(value: 'Test Value 2'),
+  ///      }),
+  ///    )
+  ///  ];
+  /// ```
+  final List<NewSection>? newSections;
+
   const EnvironmentConfig({
     required this.appTitle,
     required this.appTitleShort,
@@ -125,6 +167,7 @@ class EnvironmentConfig {
     this.pusherConfig,
     required this.showDebugPanel,
     required this.debugPanelColor,
+    this.newSections,
   });
 
   static EnvironmentConfig getEnvConfig() {
@@ -170,6 +213,7 @@ class EnvironmentConfig {
     PusherConfig? pusherConfig,
     bool? showDebugPanel,
     Color? debugPanelColor,
+    List<NewSection>? newSections,
   }) {
     return EnvironmentConfig(
       appTitle: appTitle ?? this.appTitle,
@@ -194,6 +238,7 @@ class EnvironmentConfig {
       pusherConfig: pusherConfig ?? this.pusherConfig,
       showDebugPanel: showDebugPanel ?? this.showDebugPanel,
       debugPanelColor: debugPanelColor ?? this.debugPanelColor,
+      newSections: newSections ?? this.newSections,
     );
   }
 
