@@ -40,11 +40,6 @@ class DebugWidget extends StatefulWidget {
 }
 
 class DebugWidgetState extends State<DebugWidget> with SingleTickerProviderStateMixin {
-  Map<String, SectionData> testMap = {
-    'Topic 1': const SectionData(value: 'Test Value'),
-    'Topic 2': const SectionData(value: 'TestValue 2')
-  };
-
   final _drawerKey = GlobalKey();
   final _focusScopeNode = FocusScopeNode();
   final _handleHeight = constHandleHeight;
@@ -99,9 +94,9 @@ class DebugWidgetState extends State<DebugWidget> with SingleTickerProviderState
 
   @override
   Widget build(BuildContext context) {
-    List<_NewSectionWidget> modifiedWidgets = newSections.map((newSection) {
-      final someWidget = _NewSectionWidget(section: newSection);
-      return someWidget;
+    List<_NewSectionWidget> devDefinedWidgets = newSections.map((newSection) {
+      final _NewSectionWidget newSectionWidget = _NewSectionWidget(section: newSection);
+      return newSectionWidget;
     }).toList();
     final double topMargin = MediaQuery.of(context).padding.top + defaultMargin;
     return showDebugPanel
@@ -295,7 +290,7 @@ class DebugWidgetState extends State<DebugWidget> with SingleTickerProviderState
                                                 verticalMargin24,
                                                 _NotificationSection(config: _environmentConfig),
                                                 verticalMargin24,
-                                                ...modifiedWidgets
+                                                ...devDefinedWidgets
                                               ],
                                             ),
                                           ),
