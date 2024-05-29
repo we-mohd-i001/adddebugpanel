@@ -748,24 +748,3 @@ class _NewSectionWidgetState extends State<_NewSectionWidget> {
     );
   }
 }
-
-///Example Code
-///```dart
-///[
-///    NewSection(
-///      sectionName: 'Section Test 1',
-///      contentHolder: const PanelDataContentHolder(content: {
-///        'Topic 1': Data(value: 'Test Value'),
-///        'Topic 2': Data(value: 'TestValue 2'),
-///      }),
-///    ),
-///    NewSection(
-///      sectionName: 'Section Test 2',
-///      contentHolder: const PanelDataContentHolder(content: {
-///        'Topic 1': Data(value: 'Test Value'),
-///        'Topic 2': Data(value: 'TestValue 2'),
-///      }),
-///    )
-///  ];
-/// ```
-class Test {}
