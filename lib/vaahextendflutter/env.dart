@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 import 'app_theme.dart';
+import 'services/dynamic_links.dart';
 import 'services/logging_library/logging_library.dart';
 import 'widgets/debug.dart';
 
@@ -39,11 +40,9 @@ final EnvironmentConfig defaultConfig = EnvironmentConfig(
       }),
     ),
     NewSection(
-      sectionName: 'Section Test 2',
-      contentHolder: const PanelDataContentHolder(content: {
-        'Topic 1': SectionData(value: 'Test Value'),
-        'Topic 2': SectionData(value: 'TestValue 2'),
-      }),
+      sectionName: 'Deep Link Option',
+      contentHolder: const PanelLinkContentHolder(
+          content: DeepLink(encoded: 'kdjfblKSBFK', decoded: 'aHJDFVlhvL,')),
     )
   ],
 );
